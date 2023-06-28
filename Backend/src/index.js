@@ -30,9 +30,11 @@ constmodels={};
 
 
 const UserManager = require("./models/UserManager");
+const PriceController = require("./models/PriceManager")
 
 
 models.user = new UserManager();
+models.price = new PriceManager();
 
 
 consthandler={
