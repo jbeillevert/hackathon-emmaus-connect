@@ -21,11 +21,11 @@
 }
 
 .sukui-button {
-    @apply bg-slate-900 text-slate-100 py-3 px-5 rounded-lg font-semibold duration-500;
+    @apply bg-teal-500 text-slate-100 py-3 px-5 rounded-lg font-semibold duration-500;
 }
 
 .sukui-button:hover {
-    @apply bg-slate-700
+    @apply bg-teal-400
 }
 
 .sukui-button2 {
@@ -37,11 +37,11 @@
 }
 
 .sukui-input {
-    @apply border border-slate-300 text-slate-500 py-3 px-5 rounded-lg bg-slate-100 w-full duration-700
+    @apply border border-slate-300 text-slate-500 py-3 px-5 rounded-lg bg-slate-100 w-full duration-200
 }
 
 .sukui-input:focus {
-    @apply outline-slate-800
+    @apply outline-teal-500
 }
 
 .sukui-select {
