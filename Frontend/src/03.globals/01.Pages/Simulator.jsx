@@ -155,7 +155,7 @@ const Simulator = () => {
               <h6 className='flex justify-center align-middle text-red-600'>* Champs obligatoires</h6>
               <h6 className='flex justify-center align-middle text-neutral-600'>Chargeur indispensable !</h6>
               <div className="submit-container flex justify-center align-middle">
-              <input type="submit" value="Estimer" className='sukui-button' />
+              <input type="submit" value="Estimer" className='sukui-button cursor-pointer' />
 
 
 
