@@ -1,17 +1,47 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { FaEyeSlash, FaEye } from "react-icons/fa";
 
 function LoginForm() {
 
     // const navigate = useNavigate();
-    const [identifiant, setIdentifiant] = useState("");
+    const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
     const [passwordVisible, setPasswordVisible] = useState(false);
     const togglePasswordVisibility = () => {
         setPasswordVisible((prevVisible) => !prevVisible);
     };
+    const navigate = useNavigate();
 
+    const handleLogin = async (e) => {
+        e.preventDefault();
+        try {
+            const response = await fetch(`http://localhost:5000/admin/login`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    username,
+                    password
+                })
+            });
+            if (response.ok) {
+                const data = await response.json();
+                console.warn(data);
+                localStorage.setItem('token', JSON.stringify(data));
+                navigate('/');
+            } else {
+                throw new Error('Error during login attempt tralalala');
+            }
+        } catch (error) {
+            console.error('Error during login attempt', error);
+            console.log('Response status:', response.status);
+            const errorMessage = await response.text();
+            console.log('Response body:', errorMessage);
+        }
+    };
 
     return (
         <>
@@ -20,13 +50,13 @@ function LoginForm() {
                     <p className="text-white text-2xl text-center mt-15 px-3 py-3 mb-4">
                         Je me connecte
                     </p>
-                    < form onSubmit="" className="">
+                    < form onSubmit={handleLogin} className="">
                         <input
                             type="text"
                             className="sukui-input px-3 py-3 mb-4"
                             placeholder="identifiant"
-                            onChange={(e) => setIdentifiant(e.target.value)}
-                            value={identifiant}
+                            onChange={(e) => setUsername(e.target.value)}
+                            value={username}
                         />
                         <div className="relative ">
                             <input

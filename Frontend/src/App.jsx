@@ -12,6 +12,7 @@ function App() {
   return (
 
     <div className="flex bg-stone-200 min-h-screen justify-end ">
+
       <MenuDashboard />
       <Router />
     </div>

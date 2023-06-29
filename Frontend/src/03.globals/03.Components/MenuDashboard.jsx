@@ -11,6 +11,7 @@ const MenuDashboard = () => {
 
 
         <div className='flex justify-start h-screen top-0 left-0 bg-gradient-to-br from-teal-900 to-teal-700
+
         w-[200px] fixed p-3 '>
             <div id='menudashboxcontent' className='flex flex-col h-full items-start justify-between'>
                 <div className=''>
