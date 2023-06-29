@@ -4,7 +4,6 @@ import Faq from "../03.globals/01.Pages/Faq";
 import Admin from "../03.globals/01.Pages/Admin";
 import Login from "../03.globals/01.Pages//Login";
 
-
 function Router() {
     return (
         <Routes>
