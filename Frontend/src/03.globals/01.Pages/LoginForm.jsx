@@ -12,6 +12,7 @@ function LoginForm() {
         setPasswordVisible((prevVisible) => !prevVisible);
     };
 
+
     return (
         <>
             <div className="relative flex flex-col items-center h-auto px-10 py-16 mx-auto sm:max-w-md my-10 bg-gradient-to-br from-teal-900 to-teal-700 rounded-md">

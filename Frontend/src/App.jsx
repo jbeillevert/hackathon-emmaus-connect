@@ -11,8 +11,9 @@ import MenuDashboard from "./03.globals/03.Components/MenuDashboard"
 function App() {
   return (
 
-    <div className="flex min-h-screen bg-stone-200">
-      {/* <MenuDashboard /> */}
+
+    <div className="bg-stone-200 min-h-screen flex">
+      <MenuDashboard />
       <Router />
     </div>
   )
