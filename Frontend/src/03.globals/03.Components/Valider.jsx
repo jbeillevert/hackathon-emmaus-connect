@@ -1,8 +1,8 @@
 import React from 'react';
 
-handleClick = (e) => {
-    setPrice(e.target.value)
-}
+// handleClick = (e) => {
+//     setPrice(e.target.value)
+// }
 
 function Valider() {
     return (
