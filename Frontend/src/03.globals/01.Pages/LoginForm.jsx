@@ -33,10 +33,13 @@ function LoginForm() {
                 localStorage.setItem('token', JSON.stringify(data));
                 navigate('/');
             } else {
-                throw new Error('Error during login attempt');
+                throw new Error('Error during login attempt tralalala');
             }
         } catch (error) {
             console.error('Error during login attempt', error);
+            console.log('Response status:', response.status);
+            const errorMessage = await response.text();
+            console.log('Response body:', errorMessage);
         }
     };
 
