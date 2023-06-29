@@ -6,10 +6,11 @@ class AdminManager extends AbstractManager {
   }
 
   insert(admin) {
+    const { username, email, hashedPassword } = admin;
     return this.database.query(
       `insert into ${this.table} 
       (username, email, hashedpassword) values (?, ?, ?)`,
-      [admin.username, admin.email, admin.password]
+      [username, email, hashedPassword]
     );
   }
 }

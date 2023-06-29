@@ -32,30 +32,3 @@ const migrate = async () => {
     console.error(err);
   }
 })();
-
-const models = {};
-
-const AdminManager = require("./src/models/AdminManager");
-const PriceManager = require("./src/models/PriceManager");
-
-models.admin = new AdminManager();
-models.price = new PriceManager();
-
-const handler = {
-  get(obj, prop) {
-    if (prop in obj) {
-      return obj[prop];
-    }
-
-    const pascalize = string =>
-      string.slice(0, 1).toUpperCase() + string.slice(1);
-
-    throw new ReferenceError(
-      `models.${prop} is not defined. Did you create ${pascalize(
-        prop
-      )}Manager.js, and did you register it in backend/src/models/index.js?`
-    );
-  },
-};
-
-module.exports = new Proxy(models, handler);
