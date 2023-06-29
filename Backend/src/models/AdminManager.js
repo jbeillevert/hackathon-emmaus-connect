@@ -7,7 +7,7 @@ class AdminManager extends AbstractManager {
 
   insert(admin) {
     const { username, email, hashedPassword } = admin;
-    return this.database.query(
+    return this.connection.query(
       `insert into ${this.table} 
       (username, email, hashedpassword) values (?, ?, ?)`,
       [username, email, hashedPassword]
