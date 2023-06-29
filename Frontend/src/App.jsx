@@ -1,11 +1,12 @@
 import React from "react"
+import MenuDashboard from "./03.globals/03.Components/MenuDashboard"
 
 function App() {
 
 
   return (
-    <div className="bg-stone-200 h-screen">
-
+    <div className="bg-stone-100 h-screen">
+      <MenuDashboard />
 
     </div>
   )
