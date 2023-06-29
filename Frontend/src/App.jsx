@@ -1,24 +1,19 @@
 import React from "react"
 
 import Router from "./02.navigation/Router"
-import LoginForm from "./03.globals/01.Pages/LoginForm"
+import MenuDashboard from "./03.globals/03.Components/MenuDashboard"
 
-import Simulator from "./03.globals/01.Pages/Simulator"
+
+
+
 
 
 function App() {
-
-
   return (
 
-    <div className="max-w-screen-xl m-auto min-h-screen flex">
+    <div className="flex m-auto min-h-screen bg-stone-200">
+      <MenuDashboard />
       <Router />
-      <LoginForm />
-
-    <div className="bg-stone-200 h-full">
-    <Simulator />
-
-
     </div>
   )
 };
