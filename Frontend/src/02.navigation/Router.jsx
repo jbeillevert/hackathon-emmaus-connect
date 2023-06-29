@@ -5,7 +5,7 @@ import HomePage from "../03.globals/01.Pages/HomePage";
 function Router() {
     return (
         <Routes>
-            <Route path="/" element={<HomePage />} />
+            <Route path="/" />
         </Routes>
     )
 }
