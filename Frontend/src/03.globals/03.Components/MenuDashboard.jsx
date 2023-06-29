@@ -7,12 +7,12 @@ const MenuDashboard = () => {
     return (
 
 
-        <div className='h-screen bg-gradient-to-br from-teal-900 to-teal-700
+        <div className='flex justify-start h-screen top-0 left-0 bg-gradient-to-br from-teal-900 to-teal-700
         w-[280px]'>
             <div id='menudashboxcontent' className='flex flex-col h-full justify-between py-10 pl-10'>
                 <div className=''>
                     
-                    <NavLink to="/dashboard/simulator" className='py-3 pl-6 rounded-tl-lg rounded-bl-lg flex'>
+                    <NavLink to="/" className='py-3 pl-6 rounded-tl-lg rounded-bl-lg flex'>
                         <h4 className='font-semibold text-lg text-stone-200'>Simulateur</h4>
                     </NavLink>
                     <NavLink to="/dashboard/faq" className='py-3 pl-6 rounded-tl-lg rounded-bl-lg flex'>
