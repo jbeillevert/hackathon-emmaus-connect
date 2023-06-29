@@ -4,14 +4,10 @@ import { LoginContext } from '../../02.navigation/LoginContext';
 
 const MenuDashboard = () => {
 
-
-    const { loggedIn, setLoggedIn, logout } = useContext(LoginContext);
-
     const normalLink = 'py-3 pl-6 rounded-tl-lg rounded-bl-lg flex text-stone-200 translate-x-4'
     const activeLink = 'py-3 pl-6 rounded-tl-lg rounded-bl-lg flex bg-stone-200 text-teal-900 translate-x-4'
 
-    return (
-
+    const { loggedIn, setLoggedIn, logout } = useContext(LoginContext);
 
     const handleLogout = () => {
         logout();
@@ -36,45 +32,46 @@ const MenuDashboard = () => {
                     </NavLink>
                     <NavLink to="/dashboard/faq" className="py-3 pl-6 rounded-tl-lg rounded-bl-lg flex">
                         <h4 className="font-semibold text-lg text-stone-200">Fonctionnement</h4>
-
-        w-[200px] fixed p-3 '>
-            <div id='menudashboxcontent' className='flex flex-col h-full items-start justify-between'>
-                <div className=''>
-                    <img src="../src/01.assets/logo.png" alt="logo Emmaus" className='scale-75' />
-                    
-                    <NavLink to="/" className={({isActive}) => isActive ? activeLink : normalLink}>
-                        <h4 className='font-semibold text-lg'>Simulateur</h4>
-                    </NavLink>
-                    <NavLink to="/dashboard/faq" className={({isActive}) => isActive ? activeLink : normalLink}>
-                        <h4 className='font-semibold text-lg'>Fonctionnement</h4>
-
                     </NavLink>
                 </div>
+                <div id='menudashboxcontent' className='flex flex-col h-full items-start justify-between'>
+                    <div className=''>
+                        <img src="../src/01.assets/logo.png" alt="logo Emmaus" className='scale-75' />
 
-                <div>
-                    {loggedIn ? (
-                        <NavLink to="dashboard/admin" className="py-3 pl-6 rounded-tl-lg rounded-bl-lg flex">
-                            <h4 className="font-semibold text-lg text-stone-200">Admin</h4>
+                        <NavLink to="/" className={({ isActive }) => isActive ? activeLink : normalLink}>
+                            <h4 className='font-semibold text-lg'>Simulateur</h4>
                         </NavLink>
-                    ) : (
-                        <NavLink to="dashboard/admin" className=" py-3 pl-6 rounded-tl-lg rounded-bl-lg flex">
-                            <h4 className="font-semibold text-lg text-stone-200">Admin</h4>
-                        </NavLink>
-                    )}
-                </div>
+                        <NavLink to="/dashboard/faq" className={({ isActive }) => isActive ? activeLink : normalLink}>
+                            <h4 className='font-semibold text-lg'>Fonctionnement</h4>
 
-                <div>
-                    {loggedIn ? (
-                        <button type="submit" className="py-3 pl-3 rounded-tl-lg rounded-bl-lg" onClick={handleLogout}>
-                            <h4 className="font-semibold text-lg text-stone-200 hover:text-red-600 duration-200">Je me déconnecte</h4>
-                        </button>
-                    ) : (
-                        <NavLink to="/dashboard/login">
-                            <button className="py-3 pl-6 rounded-tl-lg rounded-bl-lg">
-                                <h4 className="font-semibold text-lg text-stone-200 hover:text-red-600 duration-200">Je me connecte</h4>
+                        </NavLink>
+                    </div>
+
+                    <div>
+                        {loggedIn ? (
+                            <NavLink to="dashboard/admin" className="py-3 pl-6 rounded-tl-lg rounded-bl-lg flex">
+                                <h4 className="font-semibold text-lg text-stone-200">Admin</h4>
+                            </NavLink>
+                        ) : (
+                            <NavLink to="dashboard/admin" className=" py-3 pl-6 rounded-tl-lg rounded-bl-lg flex">
+                                <h4 className="font-semibold text-lg text-stone-200">Admin</h4>
+                            </NavLink>
+                        )}
+                    </div>
+
+                    <div>
+                        {loggedIn ? (
+                            <button type="submit" className="py-3 pl-3 rounded-tl-lg rounded-bl-lg" onClick={handleLogout}>
+                                <h4 className="font-semibold text-lg text-stone-200 hover:text-red-600 duration-200">Je me déconnecte</h4>
                             </button>
-                        </NavLink>
-                    )}
+                        ) : (
+                            <NavLink to="/dashboard/login">
+                                <button className="py-3 pl-6 rounded-tl-lg rounded-bl-lg">
+                                    <h4 className="font-semibold text-lg text-stone-200 hover:text-red-600 duration-200">Je me connecte</h4>
+                                </button>
+                            </NavLink>
+                        )}
+                    </div>
                 </div>
             </div>
         </div>
