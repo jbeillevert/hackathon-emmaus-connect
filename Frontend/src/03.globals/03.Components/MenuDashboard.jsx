@@ -8,15 +8,15 @@ const MenuDashboard = () => {
 
 
         <div className='flex justify-start h-screen top-0 left-0 bg-gradient-to-br from-teal-900 to-teal-700
-        w-[280px]'>
-            <div id='menudashboxcontent' className='flex flex-col h-full justify-between py-10 pl-10'>
+        w-[200px] fixed p-3 '>
+            <div id='menudashboxcontent' className='flex flex-col h-full items-start justify-between'>
                 <div className=''>
                     
                     <NavLink to="/" className='py-3 pl-6 rounded-tl-lg rounded-bl-lg flex'>
                         <h4 className='font-semibold text-lg text-stone-200'>Simulateur</h4>
                     </NavLink>
                     <NavLink to="/dashboard/faq" className='py-3 pl-6 rounded-tl-lg rounded-bl-lg flex'>
-                        <h4 className='font-semibold text-lg text-stone-200'>Questions / Reponses</h4>
+                        <h4 className='font-semibold text-lg text-stone-200'>Fonctionnement</h4>
                     </NavLink>
                 </div>
 

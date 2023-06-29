@@ -14,6 +14,10 @@
   @apply text-slate-800 text-2xl font-semibold;
 }
 
+.sukui-h4 {
+  @apply text-slate-700 text-xl font-medium;
+}
+
 .sukui-p {
   @apply text-slate-600 text-lg;
 }

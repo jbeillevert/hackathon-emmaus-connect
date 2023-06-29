@@ -1,19 +1,18 @@
 
-const categories = [
-    {name: "Catégorie D", range: [0, 179]},
-    {name: "Catégorie C", range: [180, 249]},
-    {name: "Catégorie B", range: [250, 349]},
-    {name: "Catégorie A", range: [350, 499]},
-    {name: "Catégorie Premium", range: [500, 800]},
-]
-
-
-
-let scoreTelephone = 0 
-
-
 
 function calculateurCategories(systeme, debloque, stockage, ram, ecran, reseau, anciennete, etat) {
+    
+    const categories = [
+        {name: "Catégorie D", range: [0, 179]},
+        {name: "Catégorie C", range: [180, 249]},
+        {name: "Catégorie B", range: [250, 349]},
+        {name: "Catégorie A", range: [350, 499]},
+        {name: "Catégorie Premium", range: [500, 800]},
+    ]
+    
+    
+    
+    let scoreTelephone = 0 
 
     // evaluer le systeme d'exploitation
     if (systeme === "iOS") {
@@ -151,8 +150,7 @@ function calculateurCategories(systeme, debloque, stockage, ram, ecran, reseau, 
         if (scoreTelephone >= data.range[0] && scoreTelephone < data.range[1]) return data.name
     })
 
-    console.log("score telephone : ", scoreTelephone);
-    console.log("rang telephone : ", rank.name);
+    return rank.name
 }
 
 
@@ -179,7 +177,7 @@ function calculateurCategories(systeme, debloque, stockage, ram, ecran, reseau, 
 
 
 //iphone 12 128go
-calculateurCategories("iOS", "oui", "128", "4", "6-7", "5G", "1-3", "correct")
+// calculateurCategories("iOS", "oui", "128", "4", "6-7", "5G", "1-3", "correct")
 
 
 //iphone 13 128go
@@ -188,3 +186,8 @@ calculateurCategories("iOS", "oui", "128", "4", "6-7", "5G", "1-3", "correct")
 
 // samsung galaxy s10
 // calculateurCategories("Android", "oui", "128", "8", "6-7", "4G", "3-5", "correct")
+
+
+
+
+export default calculateurCategories
