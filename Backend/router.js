@@ -2,9 +2,10 @@ const express = require("express");
 
 const router = express.Router();
 
-const AdminControllers = require("./controllers/AdminControllers");
-const PriceControllers = require("./controllers/PriceControllers");
+const AdminControllers = require("./src/controllers/AdminControllers");
+const PriceControllers = require("./src/controllers/PriceControllers");
 
+router.get("/admin", AdminControllers.browse);
 router.post("/admin", AdminControllers.add);
 
 router.get("/price", PriceControllers.browse);
