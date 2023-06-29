@@ -8,7 +8,7 @@ const MenuDashboard = () => {
 
 
         <div className='flex justify-start h-screen top-0 left-0 bg-gradient-to-br from-teal-900 to-teal-700
-        w-[280px]'>
+        w-[280px] fixed'>
             <div id='menudashboxcontent' className='flex flex-col h-full justify-between py-10 pl-10'>
                 <div className=''>
                     
