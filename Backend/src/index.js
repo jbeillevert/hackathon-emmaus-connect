@@ -29,11 +29,11 @@ pool.getConnection().catch(() =>{
 constmodels={};
 
 
-const UserManager = require("./models/UserManager");
-const PriceController = require("./models/PriceManager")
+const AdminManager = require("./models/AdminManager");
+const PriceManager = require("./models/PriceManager")
 
 
-models.user = new UserManager();
+models.admin = new AdminManager();
 models.price = new PriceManager();
 
 

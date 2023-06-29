@@ -2,14 +2,12 @@ const express = require("express");
 
 const router = express.Router();
 
-const UserControllers = require("./controllers/UserControllers");
+const AdminControllers = require("./controllers/AdminControllers");
 const PriceControllers = require("./controllers/PriceControllers");
 
-router.get("/user", UserControllers.browse);
-router.get("/user/:id", UserControllers.read);
-router.put("/user/:id", UserControllers.edit);
-router.post("/user", UserControllers.add);
-router.delete("/user/:id", UserControllers.destroy);
+
+router.post("/admin", AdminControllers.add);
+
 
 router.get("/price", PriceControllers.browse);
 router.get("/price/:id", PriceControllers.read);

@@ -1,17 +1,21 @@
 import React from "react"
-import Simulator from "./03.globals/01.Pages/Simulator"
-import Estimation from "./03.globals/03.Components/Estimation"
+
+import Router from "./02.navigation/Router"
+import MenuDashboard from "./03.globals/03.Components/MenuDashboard"
+
+
+
+
+
 
 function App() {
-
-
   return (
-    <div className="bg-stone-200 h-full">
 
-    <Simulator />
-
+    <div className="flex m-auto min-h-screen bg-stone-200">
+      <MenuDashboard />
+      <Router />
     </div>
   )
-}
+};
 
 export default App
