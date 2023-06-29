@@ -5,9 +5,7 @@ const router = express.Router();
 const AdminControllers = require("./controllers/AdminControllers");
 const PriceControllers = require("./controllers/PriceControllers");
 
-
 router.post("/admin", AdminControllers.add);
-
 
 router.get("/price", PriceControllers.browse);
 router.get("/price/:id", PriceControllers.read);
