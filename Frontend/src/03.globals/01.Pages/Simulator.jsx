@@ -1,9 +1,15 @@
 import React from 'react';
 
-const Simulateur = () => {
+const Simulator = () => {
     return (
         <div className='flex flex-col items-center gap-10'>
             <h2 className='sukui-h2'>Simulateur</h2>
+            <div className="reference-container flex gap-5 items-center">
+            <label htmlFor="marque" className='sukui-label min-w-fit'>Marque :</label>
+            <input type="text" className='sukui-input'placeholder='ex: Samsung'/>
+            <label htmlFor="model" className='sukui-label min-w-fit'>Modèle :</label>
+            <input type="text" className='sukui-input'placeholder='ex: Galaxy Note 20'/>
+            </div>
             <div className="flex w-full flex-wrap gap-10 justify-center">
                 {/* Système*/}
                 <div className="flex flex-col gap-3 p-2 w-1/4">
@@ -91,6 +97,8 @@ const Simulateur = () => {
                     </select>
                 </div>
             </div>
+            <h6 className='flex justify-center align-middle text-red-600'>Chargeur indispensable !</h6>
+
             <button className='sukui-button'>
                 ESTIMER
             </button>
@@ -98,4 +106,4 @@ const Simulateur = () => {
     );
 };
 
-export default Simulateur;
+export default Simulator;
