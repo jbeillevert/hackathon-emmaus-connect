@@ -25,18 +25,11 @@ function App() {
 
   return (
 
-
-    <div className="bg-stone-200 min-h-screen flex">
+    <div className="flex bg-stone-200 min-h-screen justify-end ">
       <LoginContext.Provider value={loginContextValue}>
         <MenuDashboard />
         <Router />
       </LoginContext.Provider>
-
-    <div className="flex bg-stone-200 min-h-screen justify-end ">
-
-      <MenuDashboard />
-      <Router />
-
     </div>
   )
 };

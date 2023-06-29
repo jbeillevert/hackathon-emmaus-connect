@@ -30,11 +30,11 @@ const Faq = () => {
   };
 
   return (
-    <div className="accordion-container  h-screen flex flex-col items-center justify-around w-calc">
+    <div className="accordion-container  h-screen flex flex-col items-center justify-around w-calc ">
       <div className="accordion  w-3/4 flex flex-col h-4/5 justify-around">
         {data.map((item, index) => (
           <div className="item" key={index}>
-            <div className="font-bold text-white title bg-gradient-to-br from-teal-900 to-teal-700 rounded-md p-5 flex justify-between">
+            <div className="font-bold text-white title bg-gradient-to-br from-teal-900 to-teal-700 rounded-md p-5 flex justify-between ">
               <h3>{item.question}</h3>
               <div
                 onClick={() => answerClickHandler(index)}
@@ -44,7 +44,7 @@ const Faq = () => {
               </div>
             </div>
             {answers[index] && <div className="content text-gray-700 p-5" >
-    {item.answer}</div>}
+              {item.answer}</div>}
           </div>
         ))}
       </div>
