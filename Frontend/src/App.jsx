@@ -1,15 +1,20 @@
 import React from "react"
-import MenuDashboard from "./03.globals/03.Components/MenuDashboard"
+
+import Router from "./02.navigation/Router"
+
+
 
 function App() {
 
 
   return (
-    <div className="bg-stone-100 h-screen">
-      <MenuDashboard />
+
+    <div className="max-w-screen-xl m-auto min-h-screen flex">
+      <Router />
+
 
     </div>
   )
-}
+};
 
 export default App
