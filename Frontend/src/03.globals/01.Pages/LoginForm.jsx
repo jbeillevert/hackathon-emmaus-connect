@@ -1,12 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaEyeSlash, FaEye } from "react-icons/fa";
+import { LoginContext } from "../../02.navigation/LoginContext";
 
 function LoginForm() {
 
     // const navigate = useNavigate();
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const { loggedIn } = useContext(LoginContext);
 
     const [passwordVisible, setPasswordVisible] = useState(false);
     const togglePasswordVisibility = () => {
@@ -78,7 +80,7 @@ function LoginForm() {
                             )}
                         </div>
                         <button
-                            type="submit"
+                            type="submit" onClick={handleLogin}
                             className="sukui-button w-full hover:bg-teal-400 "
                         >
                             S'identifier
