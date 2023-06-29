@@ -1,5 +1,6 @@
 import React from "react"
 import Router from "./02.navigation/Router"
+import MenuDashboard from "./03.globals/03.Components/MenuDashboard"
 
 
 
@@ -8,7 +9,8 @@ import Router from "./02.navigation/Router"
 function App() {
   return (
 
-    <div className="max-w-screen-xl m-auto min-h-screen bg-stone-200 flex">
+    <div className="flex m-auto min-h-screen bg-stone-200">
+      <MenuDashboard />
       <Router />
     </div>
   )
