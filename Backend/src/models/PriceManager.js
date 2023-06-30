@@ -6,29 +6,53 @@ class PriceManager extends AbstractManager {
   }
 
   insert(price) {
-    return this.database.query(
-      `insert into ${this.table} 
-      (cat_premium, cat_a, cat_b, cat_c, cat_d) values (?, ?, ?, ?, ?)`,
+    return this.connection.query(
+      `INSERT INTO ${this.table} 
+      (cat_premium_min, cat_premium_max, cat_a_min, cat_a_max, cat_b_min, cat_b_max, cat_c_min, cat_c_max, cat_d_min, cat_d_max) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
       [
-        price.cat_premium,
-        price.cat_a,
-        price.cat_b,
-        price.cat_c,
-        price.cat_d
+        price.cat_premium_min,
+        price.cat_premium_max,
+        price.cat_a_min,
+        price.cat_a_max,
+        price.cat_b_min,
+        price.cat_b_max,
+        price.cat_c_min,
+        price.cat_c_max,
+        price.cat_d_min,
+        price.cat_d_max
       ]
     );
   }
 
   update(price) {
-    return this.database.query(
-      `update ${this.table} set cat_premium = ?, cat_a = ?, cat_b = ?, cat_c = ?, cat_d = ? where id = ?`,
+    const {
+        cat_premium_min,
+        cat_premium_max,
+        cat_a_min,
+        cat_a_max,
+        cat_b_min,
+        cat_b_max,
+        cat_c_min,
+        cat_c_max,
+        cat_d_min,
+        cat_d_max,
+        id
+    } = price
+
+    return this.connection.query(
+      `UPDATE ${this.table} SET cat_premium_min = ?, cat_premium_max = ?, cat_a_min = ?, cat_a_max = ?, cat_b_min = ?, cat_b_max = ?, cat_c_min = ?, cat_c_max = ?, cat_d_min = ?, cat_d_max = ? WHERE id = ?`,
       [
-        price.cat_premium,
-        price.cat_a,
-        price.cat_b,
-        price.cat_c,
-        price.cat_d,
-        price.id
+        cat_premium_min,
+        cat_premium_max,
+        cat_a_min,
+        cat_a_max,
+        cat_b_min,
+        cat_b_max,
+        cat_c_min,
+        cat_c_max,
+        cat_d_min,
+        cat_d_max,
+        id
       ]
     );
   }
