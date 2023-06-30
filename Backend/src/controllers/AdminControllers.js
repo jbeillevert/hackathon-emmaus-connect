@@ -1,7 +1,6 @@
 const models = require("../models");
 
 const browse = (req, res) => {
-  console.log("Coucou", models.admin);
   models.admin
     .findAll()
     .then(([rows]) => {
@@ -32,8 +31,6 @@ const read = (req, res) => {
 const edit = (req, res) => {
   const admin = req.body;
 
-  // TODO validations (length, format...)
-
   admin.id = parseInt(req.params.id, 10);
 
   models.admin
@@ -53,9 +50,7 @@ const edit = (req, res) => {
 
 const add = (req, res) => {
   const admin = req.body;
-
-  // TODO validations (length, format...)
-
+  console.log("Coucou", req.body);
   models.admin
     .insert(admin)
     .then(([result]) => {
@@ -83,10 +78,33 @@ const destroy = (req, res) => {
     });
 };
 
+const getUserByEmailWithPasswordAndPassToNext = (req, res, next) => {
+  const { username, password } = req.body;
+
+  models.admin
+    .findByUsername(username)
+    .then(([result]) => {
+      if (result[0] != null) {
+        req.admin = result[0];
+        console.warn("user identified by Username, so far so good");
+        next();
+      } else {
+        res.status(401).json({ error: "Invalid username or password" });
+      }
+    })
+    .catch(err => {
+      console.error(err);
+      res
+        .status(500)
+        .send("UserController level, error retrieving data from database");
+    });
+};
+
 module.exports = {
   browse,
   read,
   edit,
   add,
   destroy,
+  getUserByEmailWithPasswordAndPassToNext,
 };
