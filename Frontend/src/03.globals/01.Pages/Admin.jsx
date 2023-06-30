@@ -6,6 +6,7 @@ import CategorieD from '../03.Components/CategorieD';
 import CategoriePremium from '../03.Components/CategoriePremium';
 import { MdEuroSymbol } from "react-icons/md";
 import axios from "axios";
+import ValidationAdmin from '../03.Components/ValidationAdmin';
 
 function Admin() {
 
@@ -19,6 +20,14 @@ const [catDMin, setCatDMin] = useState(0);
 const [catDMax, setCatDMax] = useState(0);
 const [catPremiumMin, setCatPremiumMin] = useState(0);
 const [catPremiumMax, setCatPremiumMax] = useState(0);
+
+const [validationOpen, setValidationOpen] = useState(false);
+
+const validationOpenHandler= (e) => {
+    e.preventDefault()
+
+    setValidationOpen(!validationOpen)
+}
 
 const handleCatDMin = (e) => {
     setCatDMin(e.target.value)
@@ -106,6 +115,8 @@ useEffect(() => {
             console.warn(res.data);
             })
             .catch((err) =>console.warn(err));
+
+    setValidationOpen(!validationOpen)
     };
 
     console.log(catBMax)
@@ -134,6 +145,9 @@ useEffect(() => {
                             <button className="sukui-button w-[170px] h-12 text-xl" onClick={handleClick}>Valider</button>
                         </div>
                     </ul>
+                    <div>
+                    {validationOpen && <ValidationAdmin validationOpen={validationOpen} setValidationOpen={setValidationOpen} />}
+                    </div>
                 </div>
             </div>
         </div>
