@@ -32,14 +32,14 @@ const Faq = () => {
 
   return (
     <div className="accordion-container  h-screen flex flex-col items-center justify-around w-calc ">
-      <div className="accordion  w-3/4 flex flex-col h-4/5 justify-around">
+      <div className="accordion  w-3/4 flex flex-col h-4/5 justify-around drop-shadow-lg">
         {data.map((item, index) => (
           <div className="item" key={index}>
             <div className="font-bold text-white title bg-gradient-to-br from-teal-900 to-teal-700 rounded-md p-5 flex justify-between ">
               <h3>{item.question}</h3>
               <div
                 onClick={() => answerClickHandler(index)}
-                className={!answers[index] ? "arrow -rotate-90 font-bold hover:cursor-pointer text-2xl ease-in-out duration-300 translate-x-2/4" : "arrow rotate-90 font-bold hover:cursor-pointer text-2xl ease-in-out duration-300 translate-x-2/4"}
+                className={!answers[index] ? "arrow -rotate-90 font-bold hover:cursor-pointer text-4xl ease-in-out duration-300 translate-x-2/4 " : "arrow rotate-90 font-bold hover:cursor-pointer text-4xl ease-in-out duration-300 translate-x-2/4"}
               >
                 {'<'}
               </div>

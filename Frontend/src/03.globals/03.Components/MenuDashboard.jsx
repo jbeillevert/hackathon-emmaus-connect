@@ -38,14 +38,14 @@ const MenuDashboard = () => {
 
                         </NavLink>
                     </div>
-
+                <div className="linkContainer">
                     <div>
                         {loggedIn ? (
                             <NavLink to="dashboard/admin" className="py-3 pl-6 rounded-tl-lg rounded-bl-lg flex">
                                 <h4 className="font-semibold text-lg text-stone-200">Admin</h4>
                             </NavLink>
                         ) : (
-                            <NavLink to="dashboard/admin" className=" py-3 pl-6 rounded-tl-lg rounded-bl-lg flex">
+                            <NavLink to="dashboard/admin" className=" hidden py-3 pl-6 rounded-tl-lg rounded-bl-lg flex">
                                 <h4 className="font-semibold text-lg text-stone-200">Admin</h4>
                             </NavLink>
                         )}
@@ -63,6 +63,7 @@ const MenuDashboard = () => {
                                 </button>
                             </NavLink>
                         )}
+                    </div>
                     </div>
                 </div>
             </div>
