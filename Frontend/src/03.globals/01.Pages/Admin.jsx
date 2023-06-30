@@ -16,7 +16,7 @@ const [catBMax, setCatBMax] = useState(0);
 const [catCMin, setCatCMin] = useState(0);
 const [catCMax, setCatCMax] = useState(0);
 const [catDMin, setCatDMin] = useState(0);
-const [catDMax, setCatDMax] = useState();
+const [catDMax, setCatDMax] = useState(0);
 const [catPremiumMin, setCatPremiumMin] = useState(0);
 const [catPremiumMax, setCatPremiumMax] = useState(0);
 
@@ -70,29 +70,45 @@ useEffect(() => {
         .catch((err) => console.error(err))
 }, [])
 
-const handleClick = () => {
-    const data = {
-        cat_premium_min: catPremiumMin,
-        cat_premium_max: catPremiumMax,
-        cat_a_min: catAMin,
-        cat_a_max: catAMax,
-        cat_b_min: catBMin,
-        cat_b_max: catBMax,
-        cat_c_min: catCMin,
-        cat_c_max: catCMax,
-        cat_d_min: catDMin,
-        cat_d_max: catDMax
-      };
+// const handleClick = () => {
+    // const data = {
+    //     cat_premium_min: catPremiumMin,
+    //     cat_premium_max: catPremiumMax,
+    //     cat_a_min: catAMin,
+    //     cat_a_max: catAMax,
+    //     cat_b_min: catBMin,
+    //     cat_b_max: catBMax,
+    //     cat_c_min: catCMin,
+    //     cat_c_max: catCMax,
+    //     cat_d_min: catDMin,
+    //     cat_d_max: catDMax
+    //   };
+      
+
+      const handleClick = () => {
+        const data = {
+            cat_premium_min: parseInt(catPremiumMin),
+            cat_premium_max: parseInt(catPremiumMax),
+            cat_a_min: parseInt(catAMin),
+            cat_a_max: parseInt(catAMax),
+            cat_b_min: parseInt(catBMin),
+            cat_b_max: parseInt(catBMax),
+            cat_c_min: parseInt(catCMin),
+            cat_c_max: parseInt(catCMax),
+            cat_d_min: parseInt(catDMin),
+            cat_d_max: parseInt(catDMax)
+          };
+          console.log(data)
       
       axios
-        .put(`http://localhost:5000/price`, data)
+        .put(`http://localhost:5000/price/1`, data)
             .then((res) =>{
             console.warn(res.data);
             })
             .catch((err) =>console.warn(err));
     };
 
-
+    console.log(catBMax)
     return (
         <div className="ml-[200px]">
             <div className="h-full flex-col">
