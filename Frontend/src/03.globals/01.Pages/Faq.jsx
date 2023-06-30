@@ -23,19 +23,21 @@ const data = [
 
 const Faq = () => {
   const [answers, setAnswers] = useState(Array(data.length).fill(false));
+  const [fade, setFade] = useState(false);
 
   const answerClickHandler = (index) => {
     const newAnswers = [...answers];
     newAnswers[index] = !newAnswers[index];
+    setFade(true)
     setAnswers(newAnswers);
   };
 
   return (
-    <div className="accordion-container  h-screen flex flex-col items-center justify-around w-calc ">
-      <div className="accordion  w-3/4 flex flex-col h-4/5 justify-around drop-shadow-lg">
+    <div className="transition-all duration-300 accordion-container  h-screen flex flex-col items-center justify-around w-calc ">
+      <div className="accordion  w-3/4 flex flex-col h-4/5 drop-shadow-lg">
         {data.map((item, index) => (
-          <div className="item" key={index}>
-            <div className="font-bold text-white title bg-gradient-to-br from-teal-900 to-teal-700 rounded-md p-5 flex justify-between ">
+          <div className="item h-fit" key={index}>
+            <div className="font-bold text-white title bg-gradient-to-br from-teal-900 to-teal-700 rounded-md p-5 flex justify-between items-center">
               <h3>{item.question}</h3>
               <div
                 onClick={() => answerClickHandler(index)}
@@ -44,8 +46,8 @@ const Faq = () => {
                 {'<'}
               </div>
             </div>
-            {answers[index] && <div className="content text-gray-700 p-5" >
-              {item.answer}</div>}
+             <div className={ answers[index] ? `content text-gray-700 p-5 transition-all duration-200 opacity-100 ` : `translate-y-full opacity-0 content text-gray-700 p-5 transition-all duration-200 `} >
+              {answers[index] && item.answer}</div> 
           </div>
         ))}
       </div>

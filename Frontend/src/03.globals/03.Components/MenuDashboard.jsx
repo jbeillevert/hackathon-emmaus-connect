@@ -20,7 +20,7 @@ const MenuDashboard = () => {
     }, [logout]);
 
     const normalLink = 'py-3 pl-6 rounded-tl-lg rounded-bl-lg flex text-stone-200 translate-x-4'
-    const activeLink = 'py-3 pl-6 rounded-tl-lg rounded-bl-lg flex bg-stone-200 text-teal-900 translate-x-4'
+    const activeLink = 'py-3 pl-6 rounded-tl-lg rounded-bl-lg flex bg-stone-200 text-teal-900 translate-x-4 transition-all duration-300'
 
     return (
         <div className="flex justify-start h-screen top-0 left-0 bg-gradient-to-br from-teal-900 to-teal-700 w-[200px] fixed p-3">
