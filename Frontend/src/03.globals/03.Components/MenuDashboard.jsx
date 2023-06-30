@@ -17,7 +17,7 @@ const MenuDashboard = () => {
         } else {
             console.warn('User currently has no token');
         }
-    }, [logout]);
+    }, [loggedIn]);
 
     const normalLink = 'py-3 pl-6 rounded-tl-lg rounded-bl-lg flex text-stone-200 translate-x-4'
     const activeLink = 'py-3 pl-6 rounded-tl-lg rounded-bl-lg flex bg-stone-200 text-teal-900 translate-x-4'
