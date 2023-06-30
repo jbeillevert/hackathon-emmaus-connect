@@ -33,7 +33,7 @@ const edit = (req, res) => {
 
   // TODO validations (length, format...)
 
-  price.id = parseInt(req.params.id, 10);
+  price.id = parseInt(req.params.id);
 
   models.price
     .update(price)
