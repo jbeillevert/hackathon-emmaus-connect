@@ -5,7 +5,7 @@ const LoginContext = createContext();
 function LoginProvider({ children }) {
 
     return (
-        <LoginContext.Provider value={{ setLoggedIn, login, logout }}>
+        <LoginContext.Provider value={{ loggedIn, setLoggedIn, login, logout }}>
             {children}
         </LoginContext.Provider>
     );
