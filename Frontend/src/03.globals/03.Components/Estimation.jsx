@@ -64,7 +64,7 @@ const Estimation = ({estimateOpen, setEstimateOpen, brand, model, resultAlgo, sy
     const getDynamicStyles = (resultAlgo) => {
         switch (resultAlgo) {
             case "Catégorie D":
-                return { backgroundColor: "red", width: "fit-content", padding: 10, borderRadius: 10,  };
+                return { backgroundColor: "red", padding: 10, borderRadius: 10  };
             case "Catégorie C":
                 return { backgroundColor: "#EF9207", padding: 10, margin: 10, borderRadius: 10 };
             case "Catégorie B":
@@ -80,7 +80,8 @@ const Estimation = ({estimateOpen, setEstimateOpen, brand, model, resultAlgo, sy
 
     const styles = StyleSheet.create({
         page: { padding: 30 },
-        title: { fontSize: 24, marginBottom: 30 },
+        title: { fontSize: 24, marginBottom: 10 },
+        didier: { fontSize: 16, marginBottom: 10 },
         colorCircle: { textAlign: "center" },
         table: { display: "table", width: "auto", margin: "auto" },
         div: {flexDirection: "row", gap: "100px"},
@@ -97,6 +98,7 @@ const Estimation = ({estimateOpen, setEstimateOpen, brand, model, resultAlgo, sy
                 <Text style={styles.title}>{brand} {model}</Text>
                 <View >
                     <Text id='etiquette' style={dynamicStyles}>{resultAlgo}</Text>
+                    {/* <Text style={styles.didier}>Tarifs entre 100 € et 200 €</Text> */}
                     
                 </View>
                 <View style={styles.table}>
