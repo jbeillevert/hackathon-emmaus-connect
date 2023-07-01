@@ -3,23 +3,23 @@
 @tailwind utilities;
 
 .sukui-h1 {
-  @apply text-slate-900 text-5xl font-extrabold;
+  @apply text-teal-950 text-5xl font-extrabold;
 }
 
 .sukui-h2 {
-  @apply text-slate-800 text-4xl font-extrabold;
+  @apply text-teal-950 text-4xl font-extrabold;
 }
 
 .sukui-h3 {
-  @apply text-slate-800 text-2xl font-semibold;
+  @apply text-teal-950 text-2xl font-semibold;
 }
 
 .sukui-h4 {
-  @apply text-slate-700 text-xl font-medium;
+  @apply text-teal-950 text-xl font-medium;
 }
 
 .sukui-p {
-  @apply text-slate-600 text-lg;
+  @apply text-teal-950 text-lg;
 }
 
 .sukui-button {

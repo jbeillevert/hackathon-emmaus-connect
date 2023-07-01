@@ -23,30 +23,30 @@ const data = [
 
 const Faq = () => {
   const [answers, setAnswers] = useState(Array(data.length).fill(false));
-  const [fade, setFade] = useState(false);
+
 
   const answerClickHandler = (index) => {
     const newAnswers = [...answers];
     newAnswers[index] = !newAnswers[index];
-    setFade(true)
+
     setAnswers(newAnswers);
   };
 
   return (
-    <div className="transition-all duration-300 accordion-container  h-screen flex flex-col items-center justify-around w-calc ">
-      <div className="accordion  w-3/4 flex flex-col h-4/5 drop-shadow-lg">
+    <div className="animate-fade-down animate-once animate-duration-[500ms] accordion-container  h-screen flex flex-col items-center justify-around w-calc ">
+      <div className="accordion gap-10 w-3/4 flex flex-col h-4/5 drop-shadow-xl">
         {data.map((item, index) => (
           <div className="item h-fit" key={index}>
             <div className="font-bold text-white title bg-gradient-to-br from-teal-900 to-teal-700 rounded-md p-5 flex justify-between items-center">
               <h3>{item.question}</h3>
               <div
                 onClick={() => answerClickHandler(index)}
-                className={!answers[index] ? "arrow -rotate-90 font-bold hover:cursor-pointer text-4xl ease-in-out duration-300 translate-x-2/4 " : "arrow rotate-90 font-bold hover:cursor-pointer text-4xl ease-in-out duration-300 translate-x-2/4"}
+                className={!answers[index] ? "arrow -rotate-90 font-bold hover:cursor-pointer text-4xl ease-in-out duration-300 " : "arrow rotate-90 font-bold hover:cursor-pointer text-4xl ease-in-out duration-300 "}
               >
                 {'<'}
               </div>
             </div>
-             <div className={ answers[index] ? `content text-gray-700 p-5 transition-all duration-200 opacity-100 ` : `translate-y-full opacity-0 content text-gray-700 p-5 transition-all duration-200 `} >
+             <div className={ answers[index] ? `animate-fade-down animate-once animate-duration-500 animate-ease-out content text-teal-950 p-5  opacity-100 ` : undefined } >
               {answers[index] && item.answer}</div> 
           </div>
         ))}
