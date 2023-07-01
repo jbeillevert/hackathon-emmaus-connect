@@ -3,11 +3,23 @@ import { Document, Page, Text, View, StyleSheet, PDFViewer } from '@react-pdf/re
 
 const Estimation = ({estimateOpen, setEstimateOpen, brand, model, resultAlgo, system, bloc, storage, memory, screen, network, seniority, state}) => {
 
+    const [showPdf, setShowPdf] = useState(false);
+    const [effect, setEffect] = useState("");
+
+    // const estimateCloseHandler = () => {
+       
+    //     setTimeout(() => {
+    //         setEstimateOpen(estimateOpen => !estimateOpen)
+    //       }, 500); 
+    //       setEffect("animate-jump-out animate-once animate-duration-[400ms] animate-ease-out")
+    // }
+
     const estimateCloseHandler = () => {
-        setEstimateOpen(!estimateOpen);
+        setEstimateOpen(!estimateOpen)
+
     }
 
-    const [showPdf, setShowPdf] = useState(false);
+
 
     const handlePdfGenerate = () => {
         console.log("Generating PDF...");
@@ -139,9 +151,9 @@ const Estimation = ({estimateOpen, setEstimateOpen, brand, model, resultAlgo, sy
 
     return (
         estimateOpen && 
-            (<div  className=' -translate-x-2/4 -translate-y-2/4 z-10 shadow-md bg-white rounded-md absolute inset-y-2/4 gap-6 flex flex-col justify-center inset-x-2/4 w-[600px] h-[400px] p-10'>
+            (<div  className={`animate-jump-in animate-once animate-duration-[200ms]   animate-ease-out z-10 shadow-xl bg-white rounded-md absolute  gap-6 flex flex-col justify-center items-center w-[600px] h-[400px] p-10`}>
                 <div>
-                    <p className='sukui-p'>Estimation :</p>
+                    <h2 className='sukui-h2'>Estimation :</h2>
                 </div>
                 <div className='flex flex-col gap-2'>
                     <h4 className='sukui-h4'>{brand} {model}</h4>
@@ -153,7 +165,7 @@ const Estimation = ({estimateOpen, setEstimateOpen, brand, model, resultAlgo, sy
                 <div>
                     <button  onClick={handlePdfGenerate}  className=' text-teal-700 text-sm border-b border-solid hover:text-teal-400'>Télécharger en pdf</button>
                 </div>
-            <p className='sukui-p absolute top-3 right-4 hover: cursor-pointer hover:text-neutral-950' onClick={estimateCloseHandler}>X</p>
+            <p className='sukui-h4 absolute top-3 right-4 hover: cursor-pointer text-teal-700 hover:text-teal-400 ' onClick={estimateCloseHandler}>X</p>
             {showPdf &&
                 <div className='absolute top-0 left-0 w-full h-full z-50 bg-white'>
                     {console.log('Rendering PDF...')}

@@ -47,7 +47,7 @@ const Simulator = () => {
 
     return (
       <div>
-        <div className='py-10 flex flex-col gap-10 ml-[200px] w-calc relative '>
+        <div className='animate-fade-down animate-once animate-duration-[500ms] py-10 flex flex-col gap-10 ml-[200px] w-calc relative justify-center items-center'>
             {estimateOpen && <Estimation estimateOpen={estimateOpen} setEstimateOpen={setEstimateOpen} brand={brand} model={model} resultAlgo={resultAlgo} system={system} bloc={bloc} storage={storage} memory={memory} screen={screen} network={network} seniority={seniority} state={state} />}
             <h2 className='sukui-h2 text-center'>Simulateur</h2>
             <form action="" method="get" className='flex flex-col items-center gap-10' onSubmit={estimateOpenHandler}>
