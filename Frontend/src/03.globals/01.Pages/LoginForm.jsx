@@ -8,7 +8,7 @@ function LoginForm() {
     // const navigate = useNavigate();
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    const { loggedIn } = useContext(LoginContext);
+    const { setLoggedIn } = useContext(LoginContext);
 
     const [passwordVisible, setPasswordVisible] = useState(false);
     const togglePasswordVisibility = () => {
@@ -33,6 +33,7 @@ function LoginForm() {
                 const data = await response.json();
                 console.warn(data);
                 localStorage.setItem('token', JSON.stringify(data));
+                setLoggedIn();
                 navigate('/');
             } else {
                 throw new Error('Error during login attempt tralalala');

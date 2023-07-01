@@ -6,6 +6,7 @@ import CategorieD from '../03.Components/CategorieD';
 import CategoriePremium from '../03.Components/CategoriePremium';
 import { MdEuroSymbol } from "react-icons/md";
 import axios from "axios";
+import ValidationAdmin from '../03.Components/ValidationAdmin';
 
 function Admin() {
 
@@ -16,9 +17,17 @@ const [catBMax, setCatBMax] = useState(0);
 const [catCMin, setCatCMin] = useState(0);
 const [catCMax, setCatCMax] = useState(0);
 const [catDMin, setCatDMin] = useState(0);
-const [catDMax, setCatDMax] = useState();
+const [catDMax, setCatDMax] = useState(0);
 const [catPremiumMin, setCatPremiumMin] = useState(0);
 const [catPremiumMax, setCatPremiumMax] = useState(0);
+
+const [validationOpen, setValidationOpen] = useState(false);
+
+const validationOpenHandler= (e) => {
+    e.preventDefault()
+
+    setValidationOpen(!validationOpen)
+}
 
 const handleCatDMin = (e) => {
     setCatDMin(e.target.value)
@@ -70,29 +79,47 @@ useEffect(() => {
         .catch((err) => console.error(err))
 }, [])
 
-const handleClick = () => {
-    const data = {
-        cat_premium_min: catPremiumMin,
-        cat_premium_max: catPremiumMax,
-        cat_a_min: catAMin,
-        cat_a_max: catAMax,
-        cat_b_min: catBMin,
-        cat_b_max: catBMax,
-        cat_c_min: catCMin,
-        cat_c_max: catCMax,
-        cat_d_min: catDMin,
-        cat_d_max: catDMax
-      };
+// const handleClick = () => {
+    // const data = {
+    //     cat_premium_min: catPremiumMin,
+    //     cat_premium_max: catPremiumMax,
+    //     cat_a_min: catAMin,
+    //     cat_a_max: catAMax,
+    //     cat_b_min: catBMin,
+    //     cat_b_max: catBMax,
+    //     cat_c_min: catCMin,
+    //     cat_c_max: catCMax,
+    //     cat_d_min: catDMin,
+    //     cat_d_max: catDMax
+    //   };
+      
+
+      const handleClick = () => {
+        const data = {
+            cat_premium_min: parseInt(catPremiumMin),
+            cat_premium_max: parseInt(catPremiumMax),
+            cat_a_min: parseInt(catAMin),
+            cat_a_max: parseInt(catAMax),
+            cat_b_min: parseInt(catBMin),
+            cat_b_max: parseInt(catBMax),
+            cat_c_min: parseInt(catCMin),
+            cat_c_max: parseInt(catCMax),
+            cat_d_min: parseInt(catDMin),
+            cat_d_max: parseInt(catDMax)
+          };
+          console.log(data)
       
       axios
-        .put(`http://localhost:5000/price`, data)
+        .put(`http://localhost:5000/price/1`, data)
             .then((res) =>{
             console.warn(res.data);
             })
             .catch((err) =>console.warn(err));
+
+    setValidationOpen(!validationOpen)
     };
 
-
+    console.log(catBMax)
     return (
         <div className="ml-[200px]">
             <div className="h-full flex-col">
@@ -100,24 +127,27 @@ const handleClick = () => {
                 <div className="flex justify-center items-center h-screen px-10">
                     <ul className="grid grid-rows-3 grid-flow-col gap-x-32 gap-y-12">
                         <li className="flex gap-6">
-                            <CategorieD /> <div className="flex gap-3 items-center"><p>de</p> <input className="text-slate-500 py-3 px-5 rounded-lg bg-slate-100 w-full duration-200 border-solid border border-black h-12" type="text" placeholder='30,00' onChange={handleCatDMin}></input> <p>à</p> <input className="text-slate-500 py-3 px-5 rounded-lg bg-slate-100 w-full duration-200 border-solid border border-black h-12" placeholder='60,00' onChange={handleCatDMax}></input> <MdEuroSymbol className="text-7xl h-4" /></div>
+                            <CategorieD /> <div className="flex gap-3 items-center"><p>de</p> <input className="text-slate-500 py-3 px-5 rounded-lg bg-slate-100 w-full duration-200 border-solid border border-black h-12" type="text" placeholder={`${catDMin}`} onChange={handleCatDMin}></input> <p>à</p> <input className="text-slate-500 py-3 px-5 rounded-lg bg-slate-100 w-full duration-200 border-solid border border-black h-12" placeholder={`${catDMax}`} onChange={handleCatDMax}></input> <MdEuroSymbol className="text-7xl h-4" /></div>
                         </li>
                         <li className="flex gap-6">
-                            <CategorieC /> <div className="flex gap-3 items-center"><p>de</p> <input className="text-slate-500 py-3 px-5 rounded-lg bg-slate-100 w-full duration-200 border-solid border border-black h-12" placeholder='61,00'onChange={handleCatCMin}></input> <p>à</p> <input className="text-slate-500 py-3 px-5 rounded-lg bg-slate-100 w-full duration-200 border-solid border border-black h-12" placeholder='90,00'onChange={handleCatCMax}></input> <MdEuroSymbol className="text-7xl h-4" /></div>
+                            <CategorieC /> <div className="flex gap-3 items-center"><p>de</p> <input className="text-slate-500 py-3 px-5 rounded-lg bg-slate-100 w-full duration-200 border-solid border border-black h-12" placeholder={`${catCMin}`} onChange={handleCatCMin}></input> <p>à</p> <input className="text-slate-500 py-3 px-5 rounded-lg bg-slate-100 w-full duration-200 border-solid border border-black h-12" placeholder={`${catCMax}`} onChange={handleCatCMax}></input> <MdEuroSymbol className="text-7xl h-4" /></div>
                         </li>
                         <li className="flex gap-6">
-                            <CategorieB /> <div className="flex gap-3 items-center"><p>de</p> <input className="text-slate-500 py-3 px-5 rounded-lg bg-slate-100 w-full duration-200 border-solid border border-black h-12" placeholder='91,00'onChange={handleCatBMin}></input> <p>à</p> <input className="text-slate-500 py-3 px-5 rounded-lg bg-slate-100 w-full duration-200 border-solid border border-black h-12" placeholder='120,00' onChange={handleCatBMax}></input> <MdEuroSymbol className="text-7xl h-4" /></div>
+                            <CategorieB /> <div className="flex gap-3 items-center"><p>de</p> <input className="text-slate-500 py-3 px-5 rounded-lg bg-slate-100 w-full duration-200 border-solid border border-black h-12" placeholder={`${catBMin}`} onChange={handleCatBMin}></input> <p>à</p> <input className="text-slate-500 py-3 px-5 rounded-lg bg-slate-100 w-full duration-200 border-solid border border-black h-12" placeholder={`${catBMax}`} onChange={handleCatBMax}></input> <MdEuroSymbol className="text-7xl h-4" /></div>
                         </li>
                         <li className="flex gap-6">
-                            <CategorieA /> <div className="flex gap-3 items-center"><p>de</p> <input className="text-slate-500 py-3 px-5 rounded-lg bg-slate-100 w-full duration-200 border-solid border border-black h-12" placeholder='121,00'onChange={handleCatAMin}></input> <p>à</p> <input className="text-slate-500 py-3 px-5 rounded-lg bg-slate-100 w-full duration-200 border-solid border border-black h-12" placeholder='150,00'onChange={handleCatAMax}></input> <MdEuroSymbol className="text-7xl h-4" /></div>
+                            <CategorieA /> <div className="flex gap-3 items-center"><p>de</p> <input className="text-slate-500 py-3 px-5 rounded-lg bg-slate-100 w-full duration-200 border-solid border border-black h-12" placeholder={`${catAMin}`} onChange={handleCatAMin}></input> <p>à</p> <input className="text-slate-500 py-3 px-5 rounded-lg bg-slate-100 w-full duration-200 border-solid border border-black h-12" placeholder={`${catAMax}`} onChange={handleCatAMax}></input> <MdEuroSymbol className="text-7xl h-4" /></div>
                         </li>
                         <li className="flex gap-6">
-                            <CategoriePremium /> <div className="flex gap-3 items-center"><p>de</p> <input className="text-slate-500 py-3 px-5 rounded-lg bg-slate-100 w-full duration-200 border-solid border border-black h-12" placeholder='151,00'onChange={handleCatPremiumMin}></input> <p>à</p> <input className="text-slate-500 py-3 px-5 rounded-lg bg-slate-100 w-full duration-200 border-solid border border-black h-12" placeholder='180,00'onChange={handleCatPremiumMax}></input> <MdEuroSymbol className="text-7xl h-4" /></div>
+                            <CategoriePremium /> <div className="flex gap-3 items-center"><p>de</p> <input className="text-slate-500 py-3 px-5 rounded-lg bg-slate-100 w-full duration-200 border-solid border border-black h-12" placeholder={`${catPremiumMin}`} onChange={handleCatPremiumMin}></input> <p>à</p> <input className="text-slate-500 py-3 px-5 rounded-lg bg-slate-100 w-full duration-200 border-solid border border-black h-12" placeholder={`${catPremiumMax}`} onChange={handleCatPremiumMax}></input> <MdEuroSymbol className="text-7xl h-4" /></div>
                         </li>
                         <div className="flex justify-end" >
                             <button className="sukui-button w-[170px] h-12 text-xl" onClick={handleClick}>Valider</button>
                         </div>
                     </ul>
+                    <div>
+                    {validationOpen && <ValidationAdmin validationOpen={validationOpen} setValidationOpen={setValidationOpen} />}
+                    </div>
                 </div>
             </div>
         </div>
