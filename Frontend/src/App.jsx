@@ -1,15 +1,37 @@
-import React from "react"
-import Simulateur from "./03.globals/01.Pages/Simulateur"
+import React, { useState, useMemo } from "react"
+import { LoginContext } from "./02.navigation/LoginContext"
+import Router from "./02.navigation/Router"
+import MenuDashboard from "./03.globals/03.Components/MenuDashboard"
 
 function App() {
 
+  const [loggedIn, setLoggedIn] = useState(false);
+  const login = () => {
+    setLoggedIn(true);
+  };
+  const logout = () => {
+    setLoggedIn(false);
+    localStorage.removeItem("token");
+  };
+  const loginContextValue = useMemo(
+    () => ({
+      loggedIn,
+      setLoggedIn,
+      login,
+      logout,
+    }),
+    [loggedIn, setLoggedIn]
+  );
 
   return (
-    <div className="bg-stone-200 h-full">
-    <Simulateur />
 
+    <div className="flex bg-stone-200 min-h-screen justify-end ">
+      <LoginContext.Provider value={loginContextValue}>
+        <MenuDashboard />
+        <Router />
+      </LoginContext.Provider>
     </div>
   )
-}
+};
 
 export default App
