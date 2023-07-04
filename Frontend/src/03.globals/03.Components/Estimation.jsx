@@ -151,7 +151,7 @@ const Estimation = ({estimateOpen, setEstimateOpen, brand, model, resultAlgo, sy
 
     return (
         estimateOpen && 
-            (<div  className={`animate-jump-in animate-once animate-duration-[200ms]   animate-ease-out z-10 shadow-xl bg-white rounded-md absolute  gap-6 flex flex-col justify-center items-center w-[600px] h-[400px] p-10`}>
+            (<div  className={` overflow-hidden h-5/6 animate-jump-in animate-once animate-duration-[200ms] animate-ease-out z-10 shadow-xl bg-white rounded-md absolute  gap-6 flex flex-col justify-center items-center w-6/12  p-10`}>
                 <div>
                     <h2 className='sukui-h2'>Estimation :</h2>
                 </div>
@@ -167,7 +167,7 @@ const Estimation = ({estimateOpen, setEstimateOpen, brand, model, resultAlgo, sy
                 </div>
             <p className='sukui-h4 absolute top-3 right-4 hover: cursor-pointer text-teal-700 hover:text-teal-400 ' onClick={estimateCloseHandler}>X</p>
             {showPdf &&
-                <div className='absolute top-0 left-0 w-full h-full z-50 bg-white'>
+                <div className=' absolute top-0 left-0 w-10/12 h-screen  z-50 bg-white'>
                     {console.log('Rendering PDF...')}
                     <PDFViewer style={{ width: '100%', height: '100%' }}>
                         <MyDocument />
