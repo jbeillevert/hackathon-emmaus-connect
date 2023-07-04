@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Document, Page, Text, View, StyleSheet, PDFViewer } from '@react-pdf/renderer';
+import axios from 'axios';
 
 const Estimation = ({estimateOpen, setEstimateOpen, brand, model, resultAlgo, system, bloc, storage, memory, screen, network, seniority, state}) => {
 
@@ -19,6 +20,36 @@ const Estimation = ({estimateOpen, setEstimateOpen, brand, model, resultAlgo, sy
 
     }
 
+    const [catAMin, setCatAMin] = useState(0);
+const [catAMax, setCatAMax] = useState(0);
+const [catBMin, setCatBMin] = useState(0);
+const [catBMax, setCatBMax] = useState(0);
+const [catCMin, setCatCMin] = useState(0);
+const [catCMax, setCatCMax] = useState(0);
+const [catDMin, setCatDMin] = useState(0);
+const [catDMax, setCatDMax] = useState(0);
+const [catPremiumMin, setCatPremiumMin] = useState(0);
+const [catPremiumMax, setCatPremiumMax] = useState(0);
+
+useEffect(() => {
+    axios
+        .get('http://localhost:5000/price')
+        .then((res) => {
+            const result = res.data[0];
+            setCatPremiumMin(result.cat_premium_min);
+            setCatPremiumMax(result.cat_premium_max);
+            setCatAMin(result.cat_a_min);
+            setCatAMax(result.cat_a_max);
+            setCatBMin(result.cat_b_min);
+            setCatBMax(result.cat_b_max);
+            setCatCMin(result.cat_c_min);
+            setCatCMax(result.cat_c_max);
+            setCatDMin(result.cat_d_min);
+            setCatDMax(result.cat_d_max);
+          })
+        .catch((err) => console.error(err))
+}, [])
+
 
 
     const handlePdfGenerate = () => {
@@ -33,36 +64,61 @@ const Estimation = ({estimateOpen, setEstimateOpen, brand, model, resultAlgo, sy
         switch (resultAlgo) {
             case "Catégorie D":
                 etiquette = (
-                    <div className='bg-red-500 py-3 px-5 rounded-lg w-fit'>
-                        <h3 className='text-white'>{resultAlgo}</h3>
+                    <div className="flex flex-col justify-center items-center">
+                        <div className='bg-red-500 py-3 px-5 rounded-lg w-fit'>
+                            <h3 className='text-white'>{resultAlgo}</h3>
+                        </div>
+                        <div>
+                            <p>de {catDMin} à {catDMax}€</p>
+                        </div>
                     </div>
                 )
                 break;
             case "Catégorie C":
                 etiquette = (
-                    <div className='bg-[#EF9207] py-3 px-5 rounded-lg w-fit'>
-                        <h3 className='text-white'>{resultAlgo}</h3>
+                    <div className="flex flex-col justify-center items-center">
+                        <div className='bg-[#EF9207] py-3 px-5 rounded-lg w-fit'>
+                            <h3 className='text-white'>{resultAlgo}</h3>
+                        </div>
+                        <div>
+                            <p>de {catCMin} à {catCMax}€</p>
+                        </div>
                     </div>
                 )
                 break;
             case "Catégorie B":
                 etiquette = (
-                    <div className='bg-yellow-500 py-3 px-5 rounded-lg w-fit'>
-                        <h3 className='text-white'>{resultAlgo}</h3>
+                    <div className="flex flex-col justify-center items-center">
+                        <div className='bg-yellow-500 py-3 px-5 rounded-lg w-fit'>
+                            <h3 className='text-white'>{resultAlgo}</h3>
+                        </div>
+                        <div>
+                            <p>de {catBMin} à {catBMax}€</p>
+                        </div>
                     </div>
                 )
                 break;
             case "Catégorie A":
                 etiquette = (
-                    <div className='bg-[#00D315] py-3 px-5 rounded-lg w-fit'>
-                        <h3 className='text-white'>{resultAlgo}</h3>
+                    <div className="flex flex-col justify-center items-center">
+                        <div className='bg-[#00D315] py-3 px-5 rounded-lg w-fit'>
+                            <h3 className='text-white'>{resultAlgo}</h3>
+                        </div>
+                        <div>
+                            <p>de {catAMin} à {catAMax}€</p>
+                        </div>
                     </div>
                 )
                 break;
             case "Catégorie Premium":
                 etiquette = (
-                    <div className='bg-[#0094d3] py-3 px-5 rounded-lg w-fit'>
-                        <h3 className='text-white'>{resultAlgo}</h3>
+                    <div className="flex flex-col justify-center items-center">
+                        <div className='bg-[#0094d3] py-3 px-5 rounded-lg w-fit'>
+                            <h3 className='text-white'>{resultAlgo}</h3>
+                        </div>
+                        <div>
+                            <p>de {catPremiumMin} à {catPremiumMax}€</p>
+                        </div>
                     </div>
                 )
                 break;
