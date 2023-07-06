@@ -31,7 +31,7 @@ function LoginForm() {
             });
             if (response.ok) {
                 const data = await response.json();
-                console.warn(data);
+                console.warn("mange du chat", data);
                 localStorage.setItem('token', JSON.stringify(data));
                 setLoggedIn();
                 navigate('/');
