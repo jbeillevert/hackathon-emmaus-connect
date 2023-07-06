@@ -52,7 +52,7 @@ const Simulator = () => {
             <h2 className='sukui-h2 text-center'>Simulateur</h2>
             <form action="" method="get" className='flex flex-col items-center gap-10' onSubmit={estimateOpenHandler}>
               <div className="reference-container flex gap-5 items-center">
-                <label htmlFor="marque" className='sukui-label min-w-fit'><span className='text-red-600'>*</span> Marque :</label>
+                <label htmlFor="marque" className='sukui-label min-w-fit'>Marque :</label>
                 <input type="text" className='sukui-input' placeholder='ex: Samsung' onChange={brandHandler}/>
                 <label htmlFor="model" className='sukui-label min-w-fit'>Modèle :</label>
                 <input type="text" className='sukui-input' placeholder='ex: Galaxy Note 20' onChange={modelHandler}/>
