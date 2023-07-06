@@ -64,7 +64,7 @@ useEffect(() => {
         switch (resultAlgo) {
             case "Catégorie D":
                 etiquette = (
-                    <div className="flex flex-col justify-center items-center">
+                    <div className="flex flex-col justify-center items-center gap-2">
                         <div className='bg-red-500 py-3 px-5 rounded-lg w-fit'>
                             <h3 className='text-white'>{resultAlgo}</h3>
                         </div>
@@ -76,7 +76,7 @@ useEffect(() => {
                 break;
             case "Catégorie C":
                 etiquette = (
-                    <div className="flex flex-col justify-center items-center">
+                    <div className="flex flex-col justify-center items-center gap-2">
                         <div className='bg-[#EF9207] py-3 px-5 rounded-lg w-fit'>
                             <h3 className='text-white'>{resultAlgo}</h3>
                         </div>
@@ -88,7 +88,7 @@ useEffect(() => {
                 break;
             case "Catégorie B":
                 etiquette = (
-                    <div className="flex flex-col justify-center items-center">
+                    <div className="flex flex-col justify-center items-center gap-2">
                         <div className='bg-yellow-500 py-3 px-5 rounded-lg w-fit'>
                             <h3 className='text-white'>{resultAlgo}</h3>
                         </div>
@@ -100,7 +100,7 @@ useEffect(() => {
                 break;
             case "Catégorie A":
                 etiquette = (
-                    <div className="flex flex-col justify-center items-center">
+                    <div className="flex flex-col justify-center items-center gap-2">
                         <div className='bg-[#00D315] py-3 px-5 rounded-lg w-fit'>
                             <h3 className='text-white'>{resultAlgo}</h3>
                         </div>
@@ -112,7 +112,7 @@ useEffect(() => {
                 break;
             case "Catégorie Premium":
                 etiquette = (
-                    <div className="flex flex-col justify-center items-center">
+                    <div className="flex flex-col justify-center items-center gap-2">
                         <div className='bg-[#0094d3] py-3 px-5 rounded-lg w-fit'>
                             <h3 className='text-white'>{resultAlgo}</h3>
                         </div>
@@ -146,6 +146,23 @@ useEffect(() => {
         }
     }
 
+    const getDynamicPrices = (resultAlgo) => {
+        switch (resultAlgo) {
+            case "Catégorie D":
+                return `de ${catDMin} à ${catDMax}€`;
+            case "Catégorie C":
+                return `de ${catCMin} à ${catCMax}€`;
+            case "Catégorie B":
+                return `de ${catBMin} à ${catBMax}€`;
+            case "Catégorie A":
+                return `de ${catAMin} à ${catAMax}€`;
+            case "Catégorie Premium":
+                return `de ${catPremiumMin} à ${catPremiumMax}€`;
+            default:
+                return "";
+        }
+    }
+
     const styles = StyleSheet.create({
         page: { padding: 30 },
         title: { fontSize: 24, marginBottom: 10 },
@@ -172,14 +189,15 @@ useEffect(() => {
                 <View style={styles.table}>
                     <div style={styles.div} >
                         <View style={styles.row}>
-                            <Text style={styles.cell}>Système d'exploitation</Text>
-                            <Text style={styles.cell}>Débloqué tout opérateur</Text>
-                            <Text style={styles.cell}>Disque dur</Text>
-                            <Text style={styles.cell}>Mémoire vive(RAM)</Text>
-                            <Text style={styles.cell}>Taille d'écran</Text>
-                            <Text style={styles.cell}>Connectivité</Text>
-                            <Text style={styles.cell}>Date de sortie</Text>
-                            <Text style={styles.cell}>Etat</Text>
+                            <Text style={styles.cell}>Système d'exploitation:</Text>
+                            <Text style={styles.cell}>Débloqué tout opérateur:</Text>
+                            <Text style={styles.cell}>Disque dur:</Text>
+                            <Text style={styles.cell}>Mémoire vive(RAM):</Text>
+                            <Text style={styles.cell}>Taille d'écran:</Text>
+                            <Text style={styles.cell}>Connectivité:</Text>
+                            <Text style={styles.cell}>Date de sortie:</Text>
+                            <Text style={styles.cell}>Etat:</Text>
+                            <Text style={styles.cell}>Prix suggéré:</Text>
                         </View>
 
                         <View style={styles.row}>
@@ -187,10 +205,11 @@ useEffect(() => {
                             <Text style={styles.cell}>{bloc}</Text>
                             <Text style={styles.cell}>{storage} Go</Text>
                             <Text style={styles.cell}>{memory} Go</Text>
-                            <Text style={styles.cell}>{screen} Pouces</Text>
+                            <Text style={styles.cell}>{screen}Pouces</Text>
                             <Text style={styles.cell}>{network}</Text>
                             <Text style={styles.cell}>{seniority} ans</Text>
                             <Text style={styles.cell}>{state}</Text>
+                            <Text style={styles.cell}>{getDynamicPrices(resultAlgo)}</Text>
                         </View>
                     </div>
                 </View>
@@ -203,7 +222,7 @@ useEffect(() => {
 
       
 
-
+console.log(catAMax)
 
     return (
         estimateOpen && 
@@ -211,12 +230,11 @@ useEffect(() => {
                 <div>
                     <h2 className='sukui-h2'>Estimation :</h2>
                 </div>
-                <div className='flex flex-col gap-2'>
+                <div className='flex flex-col gap-4 items-center'>
                     <h4 className='sukui-h4'>{brand} {model}</h4>
                     <div>
                         {etiquetteDynamique(resultAlgo)}
                     </div>
-                    {/* <p className='sukui-p'>Prix suggéré : de € à €</p> */}
                 </div>
                 <div>
                     <button  onClick={handlePdfGenerate}  className=' text-teal-700 text-sm border-b border-solid hover:text-teal-400'>Télécharger en pdf</button>
