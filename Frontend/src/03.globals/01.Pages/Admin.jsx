@@ -78,20 +78,6 @@ useEffect(() => {
           })
         .catch((err) => console.error(err))
 }, [])
-
-// const handleClick = () => {
-    // const data = {
-    //     cat_premium_min: catPremiumMin,
-    //     cat_premium_max: catPremiumMax,
-    //     cat_a_min: catAMin,
-    //     cat_a_max: catAMax,
-    //     cat_b_min: catBMin,
-    //     cat_b_max: catBMax,
-    //     cat_c_min: catCMin,
-    //     cat_c_max: catCMax,
-    //     cat_d_min: catDMin,
-    //     cat_d_max: catDMax
-    //   };
       
 
       const handleClick = () => {

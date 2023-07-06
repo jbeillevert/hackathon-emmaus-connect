@@ -37,15 +37,15 @@ const Faq = () => {
       <div className="accordion gap-10 w-3/4 flex flex-col h-4/5 drop-shadow-xl">
         {data.map((item, index) => (
           <div className="item h-fit" key={index}>
-            <div className="font-bold text-white title bg-gradient-to-br from-teal-900 to-teal-700 rounded-md p-5 flex justify-between items-center">
+            <button type="button" onClick={() => answerClickHandler(index)} className="w-full font-bold text-white title bg-gradient-to-br from-teal-900 to-teal-700 rounded-md p-5 flex justify-between items-center">
               <h3>{item.question}</h3>
               <div
-                onClick={() => answerClickHandler(index)}
+                
                 className={!answers[index] ? "arrow -rotate-90 font-bold hover:cursor-pointer text-4xl ease-in-out duration-300 " : "arrow rotate-90 font-bold hover:cursor-pointer text-4xl ease-in-out duration-300 "}
               >
                 {'<'}
               </div>
-            </div>
+            </button>
              <div className={ answers[index] ? `animate-fade-down animate-once animate-duration-500 animate-ease-out content text-teal-950 p-5  opacity-100 ` : undefined } >
               {answers[index] && item.answer}</div> 
           </div>
